@@ -5,7 +5,10 @@
 ### Added
 - 完成仓库搭建
 - 将原来的用户手册代码整合到`xdyy-usermanual.cls`
-- 增加了info接口写个人信息
+- 增加了`info`接口写个人信息
+
+### Removed
+- 去掉`remark`环境的”作者“二字
 
 ## 仓库地址
 

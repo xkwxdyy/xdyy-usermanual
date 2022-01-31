@@ -134,7 +134,7 @@
   \group_begin:
     \par \large
     \color{violet}
-    作者注：
+    注：
       #1
   \group_end:
 }
