@@ -2,6 +2,17 @@
 \ProvidesClass{xdyy-usermanual}
               [2022/01/31 v0.0.1 Class for Writing usermanual document.]
 \LoadClass{l3doc}
+% \xdyymanualsetup{
+%   info = {
+%     author            = {夏康玮},
+%     title             = {用户手册},
+%     email             = {kangweixia_xdyy@163.com},
+%     date              = {2022-01-31},
+%     version           = {0.0.1},
+%     github-repository = {https://github.com/xkwxdyy/},
+%     gitee-repository  = {https://gitee.com/xkwxdyy/},
+%   }
+% }
 % \meta{xxx}: <xxx>
 % \marg{xxx}: {xxx}
 % \oarg{xxx}: [xxx]
@@ -29,7 +40,7 @@
   minted,
   sourcecodepro,
   mwe,
-  graphicx,
+  % graphicx,
   hyperref
 }
 
