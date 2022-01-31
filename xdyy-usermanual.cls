@@ -99,7 +99,7 @@
 \RenewDocumentCommand { \emph } {m} 
   {
     \group_begin:
-      \bfseries \textcolor{red!80}{#1} 
+      \slshape \bfseries  #1
     \group_end:
   }
 
