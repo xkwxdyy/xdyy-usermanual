@@ -96,7 +96,7 @@
 %%%% 自定义命令 %%%%
 \ExplSyntaxOn
 % 重定义强调\emph命令
-\RenewDocumentCommand { \emph } {m} 
+\RenewDocumentCommand { \emph } { +m } 
   {
     \group_begin:
       \slshape \bfseries  #1
