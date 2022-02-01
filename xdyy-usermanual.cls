@@ -1,6 +1,6 @@
 \NeedsTeXFormat{LaTeX2e}[2018/04/01]
 \ProvidesClass{xdyy-usermanual}
-              [2022/01/31 v0.0.1 Class for Writing usermanual document.]
+              [2022/02/01 v0.0.1 Class for Writing usermanual document.]
 \LoadClass{l3doc}
 % \xdyymanualsetup{
 %   info = {
@@ -46,6 +46,8 @@
 
 \setminted{formatcom=\xeCJKVerbAddon}
 
+% 设置latexcode和bashcode的背景颜色
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
 %%%% 重新设计个人信息接口 %%%%
 \ExplSyntaxOn
 \tl_new:N \l__xdyymanual_info_author_tl                % 作者名
