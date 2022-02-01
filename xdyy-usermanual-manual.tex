@@ -3,12 +3,12 @@
 \xdyymanualsetup{
   info = {
     author            = {夏康玮},
-    title             = {用户手册},
+    title             = { \cls{xdyy-usermanual} 文类},
     email             = {kangweixia_xdyy@163.com},
-    date              = {2022-01-31},
+    date              = {2022-02-01},
     version           = {0.0.1},
-    github-repository = {https://github.com/xkwxdyy/},
-    gitee-repository  = {https://gitee.com/xkwxdyy/},
+    github-repository = {https://github.com/xkwxdyy/xdyy-usermanual},
+    gitee-repository  = {https://gitee.com/xkwxdyy/xdyy-usermanual},
   }
 }
 
@@ -17,19 +17,249 @@
 \tableofcontents
 
 
-\section{宏包简介}
+\section{文类简介}
+本文类基于 \cls{l3doc} 文类编写，增加一些自定义命令环境，并且用 \LaTeX3 设计了文档基本信息接口。
+
+主要用于编写宏包或文类的用户手册。
 
 
 \section{命令环境说明}
 
 
-\subsection{命令}
-% \begin{function}{foo}
-%   \begin{syntax}
+\subsection{ \cls{l3doc} 中的常用命令环境 }
 
-%   \end{syntax}
-% \end{function}
+\begin{function}{\meta}
+  \begin{syntax}
+    |\meta{content}|
+  \end{syntax}
+  产生 \meta{content} 带尖括号的效果
+\end{function}
 
-\subsection{环境}
+\begin{function}{\marg}
+  \begin{syntax}
+    |\marg{content}|
+  \end{syntax}
+  “必选参数”，产生 \marg{content} 的效果
+\end{function}
 
+\begin{function}{\oarg}
+  \begin{syntax}
+    |\oarg{content}|
+  \end{syntax}
+  “可选参数”，产生 \oarg{content} 的效果
+\end{function}
+
+
+
+\begin{function}{\tn}
+  \begin{syntax}
+    |\tn{content}|
+  \end{syntax}
+  “\LaTeXe{}的命令”，产生 \tn{content} 的效果
+\end{function}
+
+\begin{function}{\cs}
+  \begin{syntax}
+    |\cs{content}|
+  \end{syntax}
+  “\LaTeX3 的函数”，里面可以嵌套 \tn{meta} 命令。产生 \cs{content} 的效果
+  \begin{hexample}
+    \cs{\meta{name}:\meta{args}}
+  \end{hexample}
+\end{function}
+
+\begin{function}{\cmd}
+  \begin{syntax}
+    |\cmd{content}|
+  \end{syntax}
+  “命令”，产生 \cmd{content} 的效果
+\end{function}
+\begin{function}{\env}
+  \begin{syntax}
+    |\env{content}|
+  \end{syntax}
+  “环境”，产生 \env{content} 的效果
+\end{function}
+\begin{function}{\pkg}
+  \begin{syntax}
+    |\pkg{content}|
+  \end{syntax}
+  “宏包”，产生 \pkg{content} 的效果
+\end{function}
+\begin{function}{\cls}
+  \begin{syntax}
+    |\cls{content}|
+  \end{syntax}
+  “文类”，产生 \cls{content} 的效果
+\end{function}
+\begin{function}{\file}
+  \begin{syntax}
+    |\file{content}|
+  \end{syntax}
+  “文件”，产生 \file{content} 的效果
+\end{function}
+
+
+\subsection{ \cls{l3doc} 外定义的命令}
+
+\begin{function}{\xdyymanualsetup}
+  \begin{syntax}
+    |\xdyymanualsetup| = |{ info = |\marg{ \kvopt{key}{val}}| }|
+  \end{syntax}
+  键值列表，目前只有用户手册的个人信息接口
+  \begin{latexcode}
+    \xdyymanualsetup{
+      info = {
+        author            = {夏康玮},
+        title             = {用户手册},
+        email             = {kangweixia_xdyy@163.com},
+        date              = {2022-02-01},
+        version           = {0.0.1},
+        github-repository = {https://github.com/xkwxdyy/foo},
+        gitee-repository  = {https://gitee.com/xkwxdyy/foo},
+      }
+    }
+  \end{latexcode}
+\end{function}
+
+\begin{function}{\init}
+  \begin{syntax}
+    |\init{content}|
+  \end{syntax}
+  变量或键值的初始值，例子：
+\end{function}
+\begin{vexample}
+    \begin{function}{label-vsep, label-hsep}
+      \begin{syntax}
+        |label-vsep| = \marg{dimension}  \init{0pt}
+        |label-hsep| = \marg{dimension}  \init{0pt}
+      \end{syntax}
+      \cmd{label} 的垂直和水平的额外偏移量
+    \end{function}
+\end{vexample}
+
+\begin{function}{\kvopt}
+  \begin{syntax}
+    |\kvopt{left content}{right content}|
+  \end{syntax}
+  为键值定义的命令，一般这么用：
+  \begin{hexample}
+    \kvopt{key}{val}
+  \end{hexample}
+\end{function}
+
+
+\subsection{ \cls{l3doc} 外定义的环境}
+
+
+\subsubsection{ 注释类 }
+
+\begin{function}{remark}
+  \begin{syntax}
+    |\begin{remark}|
+      |  ...|
+    |\end{remark}|
+  \end{syntax}
+  常见的 \env{remark} 环境，效果如下：
+  \begin{vexample}
+    \begin{remark}
+      请注意，2022你会暴富！
+    \end{remark}
+  \end{vexample}
+\end{function}
+
+
+
+\subsubsection{ 代码显示 }
+
+\begin{function}{latexcode}
+  \begin{syntax}
+    |\begin{latexcode}|
+      |  ...|
+    |\end{latexcode}|
+  \end{syntax}
+  用于输出 \LaTeX{} 的代码
+\end{function}
+
+\begin{function}{bashcode}
+  \begin{syntax}
+    |\begin{bashcode}|
+      |  ...|
+    |\end{bashcode}|
+  \end{syntax}
+  用于输出 \cmd{cmd} 或终端 的代码
+\end{function}
+
+
+
+\subsubsection{代码例子一起显示}
+来自死扣的博客 \href{https://sikouhjw.github.io/2020/04/29/2020-04-29-Make-an-example-environment-with-minted}{《用 minted 宏包制作 example 环境》}
+
+\begin{remark}
+  目前下面三个环境的 \cmd{body} 相对于 \env{...example} （\kvopt{...}{h, v, float}）环境要有两次缩进才能得到正常不缩进的效果。
+\end{remark}
+如要得到
+\begin{latexcode}
+    \begin{enumerate}
+      \item item1
+      \item item2
+    \end{enumerate}
+\end{latexcode}
+要使用
+\begin{latexcode}
+    \begin{...example}
+        \begin{enumerate}
+          \item item1
+          \item item2
+        \end{enumerate}
+    \end{...example}
+\end{latexcode}
+才行
+
+\begin{function}{hexample}
+  \begin{syntax}
+    |\begin{hexample}|
+      |    ...|
+    |\end{hexample}|
+  \end{syntax}
+  代码和例子水平
+\end{function}
+\begin{hexample}
+    \begin{equation}\label{eq:1}
+      E = mc^2
+    \end{equation}
+    公式~(\ref{eq:1}) 是著名的质能方程。
+\end{hexample}
+
+\begin{function}{vexample}
+  \begin{syntax}
+    |\begin{vexample}|
+      |    ...|
+    |\end{vexample}|
+  \end{syntax}
+  代码和例子竖直
+\end{function}
+\begin{vexample}
+    \begin{equation}\label{eq:2}
+      E = mc^2
+    \end{equation}
+    公式~(\ref{eq:2}) 是著名的质能方程。
+\end{vexample}
+
+
+\begin{function}{floatexample}
+  \begin{syntax}
+    |\begin{floatexample}|
+      |    ...|
+    |\end{floatexample}|
+  \end{syntax}
+  浮动体专用
+\end{function}
+\begin{floatexample}
+    \begin{figure}[htbp]
+      \centering
+      \includegraphics[width=5cm]{example-image.pdf}
+      \caption{content}
+    \end{figure}
+    \end{floatexample}
 \end{document}
