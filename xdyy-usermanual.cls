@@ -268,7 +268,7 @@
 \newminted{latex}{
   linenos,   % 显示行数
   % firstnumber = last,    % 行数接着上一个minted环境
-  gobble = 2,    % 吃掉开头的多少空格
+  % gobble = 2,    % 吃掉开头的多少空格
   % showspaces,   % 显示空格
   breaklines,     % 断行，并显示换行符
   breakautoindent=false,
@@ -290,7 +290,7 @@
 \newminted{bash}{
   linenos,   % 显示行数
   % firstnumber = last,    % 行数接着上一个minted环境
-  gobble = 2,    % 吃掉开头的多少空格
+  % gobble = 2,    % 吃掉开头的多少空格
   % showspaces,   % 显示空格
   breaklines,     % 断行，并显示换行符
   breakautoindent=false,
